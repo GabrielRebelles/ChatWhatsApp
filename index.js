@@ -6,6 +6,8 @@ const io = require('socket.io')(http);
 const path = require("path")
 const sockets=require("./src/sockets.js")
 
+//db
+require("./db/db-init.js")
 
 //cada usuario que se conecte:
 io.on('connection', sockets);

@@ -10,8 +10,9 @@
     <script src="/socket.io/socket.io.js"></script>
 
     <input type="text" placeholder="Usuario" id="user" value="Usuario Prueba"><br>
+    <input type="button" value="Login" id="buttonLogin"><br>
     <input type="text" placeholder="Mensaje" id="message" value="Mensaje de prueba"><br>
-    <input type="text" placeholder="Whatsapp" id="phone" value="5491100000000"><br>
+    <input type="text" placeholder="Whatsapp" id="phone" value="5491134824698"><br>
     <input type="button" value="Enviar" id="button">
 
     <div id="msg"></div>
@@ -26,6 +27,12 @@
             document.getElementById("msg").appendChild(p)
 
         })
+
+        document.getElementById("buttonLogin").addEventListener("click",()=>{
+            let user = document.getElementById("user").value
+            socket.emit('login',user)
+        })
+
         
         document.getElementById("button").addEventListener("click",()=>{
             let user = document.getElementById("user").value
