@@ -1,52 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h2>Test</h2>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+   
+    
+    <title>Chat wpp</title>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
     <script src="/socket.io/socket.io.js"></script>
-
-    <input type="text" placeholder="Usuario" id="user" value="Usuario Prueba"><br>
-    <input type="button" value="Login" id="buttonLogin"><br>
-    <input type="text" placeholder="Mensaje" id="message" value="Mensaje de prueba"><br>
-    <input type="text" placeholder="Whatsapp" id="phone" value="5491134824698"><br>
-    <input type="button" value="Enviar" id="button">
-
-    <div id="msg"></div>
-
-    <script>
-        var socket = io();
-        socket.on("receive message",(message)=>{
-            
-            let p = document.createElement("p")
-            p.innerHTML=message.sender.pushname+": "+message.body;
-
-            document.getElementById("msg").appendChild(p)
-
-        })
-
-        document.getElementById("buttonLogin").addEventListener("click",()=>{
-            let user = document.getElementById("user").value
-            socket.emit('login',user)
-        })
-
-        
-        document.getElementById("button").addEventListener("click",()=>{
-            let user = document.getElementById("user").value
-            let message = document.getElementById("message").value
-            let num = document.getElementById("phone").value
-            console.log(num,message,user);
-            socket.emit('send message',{num,message,user})
-
-            let p = document.createElement("p")
-            p.innerHTML=user+": "+message;
-            document.getElementById("msg").appendChild(p)
-        })
-        
-
-    </script>
-</body>
+    <script>var socket = io();</script>
+    <div id="root"></div>
+    <script src="bundle.js"></script>
+  </body>
 </html>
